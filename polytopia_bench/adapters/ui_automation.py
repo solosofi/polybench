@@ -1,5 +1,6 @@
 import json
 import re
+import subprocess
 import time
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
@@ -27,6 +28,7 @@ class UIAutomationAdapter(GameAdapter):
         self.calibration_path = Path(calibration_path)
         self.calibration: Dict[str, Any] = {}
         self._sct: Optional[mss.mss] = None
+        self._game_proc: Optional[subprocess.Popen] = None
 
     def _load_calibration(self) -> None:
         if not self.calibration_path.exists():
@@ -69,6 +71,13 @@ class UIAutomationAdapter(GameAdapter):
                 raise ValueError(f"tile_grid missing {key}")
         buttons = data.get("buttons", {})
         self._require_point(buttons, "end_turn")
+        if data.get("game_path"):
+            start_flow = data.get("start_flow")
+            start_buttons = data.get("start_buttons")
+            if not isinstance(start_flow, list) or not start_flow:
+                raise ValueError("start_flow must be a non-empty list when game_path is set")
+            if not isinstance(start_buttons, dict) or not start_buttons:
+                raise ValueError("start_buttons must be provided when game_path is set")
 
     @staticmethod
     def _require_region(container: Dict[str, Any], name: str) -> None:
@@ -140,11 +149,37 @@ class UIAutomationAdapter(GameAdapter):
             return int(x_str.strip()), int(y_str.strip())
         raise ValueError(f"{label} must be {{x,y}} or 'x,y'")
 
+    def _start_game(self, difficulty: str, opponents: int) -> None:
+        game_path = self.calibration.get("game_path")
+        if not game_path:
+            return
+
+        if self._game_proc is None or self._game_proc.poll() is not None:
+            self._game_proc = subprocess.Popen([game_path])
+            time.sleep(float(self.calibration.get("start_wait_sec", 8.0)))
+
+        self._focus_window()
+
+        start_buttons = self.calibration.get("start_buttons", {})
+        start_flow = self.calibration.get("start_flow", [])
+        for step in start_flow:
+            if step == "difficulty":
+                key = f"difficulty_{difficulty}"
+            elif step == "opponents":
+                key = f"opponents_{opponents}"
+            else:
+                key = step
+            if key not in start_buttons:
+                raise ValueError(f"start_buttons missing '{key}'")
+            self._click(self._point(start_buttons[key]))
+            self._sleep_short()
+
     def reset(self, difficulty: str, opponents: int, game_index: int) -> None:
         _ = difficulty
         _ = opponents
         _ = game_index
         self._load_calibration()
+        self._start_game(difficulty, opponents)
 
     def is_done(self) -> bool:
         text = self._ocr_text(self._screenshot(self._region("end_screen"))).lower()

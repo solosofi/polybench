@@ -20,6 +20,8 @@ Create `calibration.json` with your UI coordinates and grid settings. Minimal ex
 ```json
 {
   "window_title": "The Battle of Polytopia",
+  "game_path": "C:/Users/User/Documents/PolytopiaBench/game/Polytopia.exe",
+  "start_wait_sec": 8,
   "tesseract_cmd": "C:/Program Files/Tesseract-OCR/tesseract.exe",
   "regions": {
     "turn": [10, 10, 120, 40],
@@ -40,6 +42,25 @@ Create `calibration.json` with your UI coordinates and grid settings. Minimal ex
     "close_popup": [1700, 120],
     "tech_tree": [80, 960]
   },
+  "start_flow": [
+    "main_play",
+    "perfection",
+    "difficulty",
+    "opponents",
+    "start_game"
+  ],
+  "start_buttons": {
+    "main_play": [960, 540],
+    "perfection": [960, 620],
+    "difficulty_easy": [400, 500],
+    "difficulty_normal": [600, 500],
+    "difficulty_hard": [800, 500],
+    "difficulty_crazy": [1000, 500],
+    "opponents_1": [500, 700],
+    "opponents_7": [800, 700],
+    "opponents_15": [1100, 700],
+    "start_game": [960, 900]
+  },
   "unit_buttons": {
     "warrior": [600, 900]
   },
@@ -56,6 +77,14 @@ Create `calibration.json` with your UI coordinates and grid settings. Minimal ex
 ```
 
 Use `examples/calibration_template.json` as a starting point.
+Use `examples/capture_mouse_pos.py` to grab screen coordinates.
+
+### Auto-start behavior
+
+If `game_path` is set, the benchmark will launch Polytopia and click the
+`start_flow` sequence automatically. The special steps `"difficulty"` and
+`"opponents"` are replaced at runtime using the CLI values, and they map to
+`start_buttons` keys like `difficulty_easy`, `opponents_7`.
 
 ## Run
 
