@@ -5,8 +5,8 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from .elo import update_elo
-from .game_api import UIAutomationGameAPI
-from .llm import CommandLLM, HttpLLM, KaggleBridgeLLM, MockLLM
+from .game_api import MiniRTSGameAPI
+from .llm import CommandLLM, HttpLLM, KaggleBridgeLLM, KaggleLocalLLM, MockLLM
 from .prompt import render_prompt
 from .schema import parse_action, validate_state
 
@@ -18,7 +18,7 @@ class RunConfig:
     difficulty: str
     opponents: int
     games: int = 1
-    calibration_path: str = "calibration.json"
+    seed: int = 0
     llm_cmd: Optional[List[str]] = None
     llm_provider: str = "openai"
     llm_host: Optional[str] = None
@@ -30,7 +30,7 @@ class RunConfig:
 
 
 def _create_game_api(config: RunConfig):
-    return UIAutomationGameAPI(config.calibration_path)
+    return MiniRTSGameAPI(seed=config.seed, max_turns=MAX_TURNS)
 
 
 def _create_llm(config: RunConfig):
@@ -38,9 +38,9 @@ def _create_llm(config: RunConfig):
         return CommandLLM(config.llm_cmd)
     provider = (config.llm_provider or "openai").lower()
     if provider == "kaggle":
-        if not config.llm_host:
-            raise ValueError("--llm-host is required for Kaggle bridge")
-        return KaggleBridgeLLM(config.llm_host, config.llm_model)
+        if config.llm_host:
+            return KaggleBridgeLLM(config.llm_host, config.llm_model)
+        return KaggleLocalLLM(config.llm_model)
     if config.llm_host or config.llm_model or config.llm_api_key:
         if not config.llm_host or not config.llm_model:
             raise ValueError("--llm-host and --llm-model are required for HTTP LLM")

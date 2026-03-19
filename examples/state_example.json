@@ -1,33 +1,799 @@
 {
-  "turn": 5,
-  "player": {
-    "id": "player_1",
-    "tribe": "Imperius",
-    "stars": 7
-  },
+  "turn": 3,
+  "player": "llm",
+  "score": 245,
+  "resources": 5,
   "cities": [
     {
-      "id": "city_1",
-      "name": "Roma",
-      "pos": {"x": 3, "y": 2},
-      "level": 2,
-      "population": 4
+      "id": 1,
+      "x": 5,
+      "y": 5,
+      "owner": 0,
+      "income": 2,
+      "farms": 0
+    },
+    {
+      "id": 2,
+      "x": 0,
+      "y": 0,
+      "owner": 1,
+      "income": 2,
+      "farms": 0
     }
   ],
   "units": [
     {
-      "id": "unit_1",
+      "id": 1,
+      "x": 5,
+      "y": 5,
+      "owner": 0,
       "type": "warrior",
-      "pos": {"x": 3, "y": 3},
+      "hp": 10
+    },
+    {
+      "id": 2,
+      "x": 0,
+      "y": 0,
+      "owner": 1,
+      "type": "warrior",
       "hp": 10
     }
   ],
-  "tech": ["Organization", "Riding"],
+  "tech": [
+    "riding"
+  ],
   "map": {
-    "size": {"w": 8, "h": 8},
-    "visible_tiles": [
-      {"x": 3, "y": 2, "terrain": "field"},
-      {"x": 3, "y": 3, "terrain": "field"}
+    "rows": 11,
+    "cols": 11,
+    "tiles": [
+      [
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": 1,
+          "unit_owner": 1
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        }
+      ],
+      [
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        }
+      ],
+      [
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        }
+      ],
+      [
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "mountain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        }
+      ],
+      [
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        }
+      ],
+      [
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": "forest",
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": 0,
+          "unit_owner": 0
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        }
+      ],
+      [
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        }
+      ],
+      [
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        }
+      ],
+      [
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        }
+      ],
+      [
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        }
+      ],
+      [
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        },
+        {
+          "terrain": "plain",
+          "resource": null,
+          "city_owner": null,
+          "unit_owner": null
+        }
+      ]
     ]
   }
 }

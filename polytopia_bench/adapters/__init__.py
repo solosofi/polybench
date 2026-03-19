@@ -1,4 +1,4 @@
 from .base import GameAdapter
-from .ui_automation import UIAutomationAdapter
+from .mini_rts import MiniRTSAdapter
 
-__all__ = ["GameAdapter", "UIAutomationAdapter"]
+__all__ = ["GameAdapter", "MiniRTSAdapter"]

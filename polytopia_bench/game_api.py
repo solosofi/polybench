@@ -3,7 +3,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Dict
 
-from .adapters import UIAutomationAdapter
+from .adapters import MiniRTSAdapter
 
 
 class GameAPI(ABC):
@@ -28,9 +28,9 @@ class GameAPI(ABC):
         raise NotImplementedError
 
 
-class UIAutomationGameAPI(GameAPI):
-    def __init__(self, calibration_path: str = "calibration.json") -> None:
-        self._adapter = UIAutomationAdapter(calibration_path)
+class MiniRTSGameAPI(GameAPI):
+    def __init__(self, seed: int = 0, max_turns: int = 30) -> None:
+        self._adapter = MiniRTSAdapter(seed=seed, max_turns=max_turns)
 
     def reset(self, difficulty: str, opponents: int, game_index: int) -> None:
         self._adapter.reset(difficulty, opponents, game_index)

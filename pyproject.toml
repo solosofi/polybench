@@ -3,23 +3,21 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "polytopia-bench"
-version = "0.2.2"
-description = "Polytopia LLM Benchmark"
+name = "mirts-bench"
+version = "0.3.0"
+description = "MiniRTS LLM Benchmark"
 readme = "README.md"
 requires-python = ">=3.9"
-keywords = ["polytopia", "benchmark", "llm"]
-dependencies = [
-  "pyautogui>=0.9.54",
-  "mss>=9.0.1",
-  "pytesseract>=0.3.10",
-  "opencv-python>=4.8.0.0",
-  "Pillow>=10.0.0",
-  "pywin32>=306",
-]
+keywords = ["minirts", "rts", "benchmark", "llm", "grid"]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/solosofi/mirts-bench"
+Repository = "https://github.com/solosofi/mirts-bench"
 
 [project.scripts]
 polybench = "polytopia_bench.cli:cli_main"
+mirtsbench = "polytopia_bench.cli:cli_main"
 
 [tool.setuptools.packages.find]
 where = ["."]

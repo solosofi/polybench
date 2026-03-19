@@ -13,14 +13,14 @@ def _parse_llm_cmd(value: Optional[str]) -> Optional[List[str]]:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="polytopia_bench")
+    parser = argparse.ArgumentParser(prog="polybench")
     sub = parser.add_subparsers(dest="command", required=True)
 
     run = sub.add_parser("run", help="Run the benchmark")
     run.add_argument("--difficulty", choices=["easy", "normal", "hard", "crazy"], required=True)
     run.add_argument("--opponents", type=int, choices=[1, 7, 15], required=True)
     run.add_argument("--games", type=int, default=1)
-    run.add_argument("--calibration", type=str, default="calibration.json")
+    run.add_argument("--seed", type=int, default=0)
     run.add_argument("--llm-cmd", type=str, default=None)
     run.add_argument("--llm-provider", type=str, choices=["openai", "kaggle"], default=None)
     run.add_argument("--llm-host", type=str, default=None)
@@ -49,7 +49,7 @@ def main() -> int:
             difficulty=args.difficulty,
             opponents=args.opponents,
             games=args.games,
-            calibration_path=args.calibration,
+            seed=args.seed,
             llm_cmd=llm_cmd,
             llm_provider=llm_provider or "openai",
             llm_host=llm_host,
