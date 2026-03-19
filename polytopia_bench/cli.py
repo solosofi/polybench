@@ -20,8 +20,7 @@ def build_parser() -> argparse.ArgumentParser:
     run.add_argument("--difficulty", choices=["easy", "normal", "hard", "crazy"], required=True)
     run.add_argument("--opponents", type=int, choices=[1, 7, 15], required=True)
     run.add_argument("--games", type=int, default=1)
-    run.add_argument("--adapter", choices=["manual", "ui"], default="manual")
-    run.add_argument("--states-dir", type=str, default=None)
+    run.add_argument("--calibration", type=str, default="calibration.json")
     run.add_argument("--llm-cmd", type=str, default=None)
     run.add_argument("--llm-host", type=str, default=None)
     run.add_argument("--llm-model", type=str, default=None)
@@ -48,8 +47,7 @@ def main() -> int:
             difficulty=args.difficulty,
             opponents=args.opponents,
             games=args.games,
-            adapter=args.adapter,
-            states_dir=args.states_dir,
+            calibration_path=args.calibration,
             llm_cmd=llm_cmd,
             llm_host=llm_host,
             llm_model=llm_model,

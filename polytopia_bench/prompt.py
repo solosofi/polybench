@@ -4,10 +4,10 @@ from typing import Any, Dict
 ACTION_SCHEMA_SUMMARY = (
     "Action JSON schema (output JSON only):\n"
     "- end_turn: { \"type\": \"end_turn\" }\n"
-    "- move: { \"type\": \"move\", \"unit_id\": \"...\", \"to\": {\"x\":0,\"y\":0} }\n"
-    "- attack: { \"type\": \"attack\", \"unit_id\": \"...\", \"target\": \"...\" or {\"x\":0,\"y\":0} }\n"
-    "- train: { \"type\": \"train\", \"city_id\": \"...\", \"unit_type\": \"...\" }\n"
-    "- build: { \"type\": \"build\", \"city_id\": \"...\", \"building_type\": \"...\" }\n"
+    "- move: { \"type\": \"move\", \"unit_id\": {\"x\":0,\"y\":0}, \"to\": {\"x\":0,\"y\":0} }\n"
+    "- attack: { \"type\": \"attack\", \"unit_id\": {\"x\":0,\"y\":0}, \"target\": {\"x\":0,\"y\":0} }\n"
+    "- train: { \"type\": \"train\", \"city_id\": {\"x\":0,\"y\":0}, \"unit_type\": \"...\" }\n"
+    "- build: { \"type\": \"build\", \"city_id\": {\"x\":0,\"y\":0}, \"building_type\": \"...\" }\n"
     "- research: { \"type\": \"research\", \"tech\": \"...\" }\n"
 )
 

@@ -1,0 +1,35 @@
+{
+  "window_title": "The Battle of Polytopia",
+  "tesseract_cmd": "C:/Program Files/Tesseract-OCR/tesseract.exe",
+  "regions": {
+    "turn": [10, 10, 120, 40],
+    "score": [1700, 10, 200, 40],
+    "map": [200, 120, 1500, 800],
+    "end_screen": [600, 200, 700, 500]
+  },
+  "tile_grid": {
+    "origin": [260, 170],
+    "dx": 64,
+    "dy": 56,
+    "rows": 11,
+    "cols": 11
+  },
+  "buttons": {
+    "end_turn": [1780, 960],
+    "confirm": [1200, 900],
+    "close_popup": [1700, 120],
+    "tech_tree": [80, 960]
+  },
+  "unit_buttons": {
+    "warrior": [600, 900]
+  },
+  "build_buttons": {
+    "farm": [600, 900]
+  },
+  "tech_buttons": {
+    "riding": [900, 500]
+  },
+  "result_rules": {
+    "win_score": 1
+  }
+}

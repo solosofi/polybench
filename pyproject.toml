@@ -4,11 +4,19 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "polytopia-bench"
-version = "0.1.0"
+version = "0.2.0"
 description = "Polytopia LLM Benchmark"
 readme = "README.md"
 requires-python = ">=3.9"
 keywords = ["polytopia", "benchmark", "llm"]
+dependencies = [
+  "pyautogui>=0.9.54",
+  "mss>=9.0.1",
+  "pytesseract>=0.3.10",
+  "opencv-python>=4.8.0.0",
+  "Pillow>=10.0.0",
+  "pywin32>=306",
+]
 
 [project.scripts]
 polybench = "polytopia_bench.cli:cli_main"

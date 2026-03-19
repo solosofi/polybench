@@ -10,3 +10,4 @@ game/
 
 # Benchmark outputs
 runs/
+calibration.json

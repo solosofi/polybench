@@ -4,8 +4,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from .adapters import ManualAdapter, UIAutomationAdapter
 from .elo import update_elo
+from .game_api import UIAutomationGameAPI
 from .llm import CommandLLM, HttpLLM, MockLLM
 from .prompt import render_prompt
 from .schema import parse_action, validate_state
@@ -18,8 +18,7 @@ class RunConfig:
     difficulty: str
     opponents: int
     games: int = 1
-    adapter: str = "manual"
-    states_dir: Optional[str] = None
+    calibration_path: str = "calibration.json"
     llm_cmd: Optional[List[str]] = None
     llm_host: Optional[str] = None
     llm_model: Optional[str] = None
@@ -29,14 +28,8 @@ class RunConfig:
     start_elo: float = 1000.0
 
 
-def _create_adapter(config: RunConfig):
-    if config.adapter == "manual":
-        if not config.states_dir:
-            raise ValueError("--states-dir is required for manual adapter")
-        return ManualAdapter(config.states_dir)
-    if config.adapter == "ui":
-        return UIAutomationAdapter()
-    raise ValueError(f"Unknown adapter: {config.adapter}")
+def _create_game_api(config: RunConfig):
+    return UIAutomationGameAPI(config.calibration_path)
 
 
 def _create_llm(config: RunConfig):
@@ -58,20 +51,20 @@ def run_benchmark(config: RunConfig) -> Dict[str, Any]:
     run_root = Path("runs") / _run_dir_name(config.difficulty, config.opponents)
     run_root.mkdir(parents=True, exist_ok=False)
 
-    adapter = _create_adapter(config)
+    game_api = _create_game_api(config)
     llm = _create_llm(config)
 
     current_elo = float(config.start_elo)
     results: List[Dict[str, Any]] = []
 
     for game_index in range(1, config.games + 1):
-        adapter.reset(config.difficulty, config.opponents, game_index)
+        game_api.reset(config.difficulty, config.opponents, game_index)
         game_dir = run_root / f"game_{game_index:03d}"
         game_dir.mkdir(parents=True, exist_ok=False)
 
         turn_index = 1
-        while not adapter.is_done() and turn_index <= MAX_TURNS:
-            state = adapter.get_state()
+        while not game_api.is_done() and turn_index <= MAX_TURNS:
+            state = game_api.get_state()
             validate_state(state)
 
             prompt = render_prompt(state)
@@ -89,14 +82,14 @@ def run_benchmark(config: RunConfig) -> Dict[str, Any]:
                 json.dumps(action, indent=2), encoding="utf-8"
             )
 
-            adapter.apply_action(action, str(game_dir), turn_index)
+            game_api.apply_action(action, str(game_dir), turn_index)
             turn_index += 1
 
-        max_turns_reached = turn_index > MAX_TURNS and not adapter.is_done()
+        max_turns_reached = turn_index > MAX_TURNS and not game_api.is_done()
         if max_turns_reached:
             print(f"Max turns reached ({MAX_TURNS}). Ending game early.")
 
-        result = adapter.get_result()
+        result = game_api.get_result()
         result_value = result.get("result")
         if result_value not in {"win", "draw", "loss"}:
             raise ValueError("Adapter result must include result=win/draw/loss")
