@@ -25,12 +25,24 @@ class KaggleLocalLLM:
 
 def _resolve_llm(model: Optional[str]) -> Any:
     try:
-        from kaggle_benchmarks import kbench
-    except Exception as exc:  # pragma: no cover - runtime dependency
-        raise RuntimeError(
-            "Kaggle local provider requires kaggle_benchmarks. "
-            "Run inside a Kaggle notebook or install kaggle_benchmarks."
-        ) from exc
+        from kaggle_benchmarks import kbench as kbench_mod
+        kbench = kbench_mod
+    except Exception:
+        try:
+            import kaggle_benchmarks as kbench  # type: ignore[no-redef]
+        except Exception as exc:  # pragma: no cover - runtime dependency
+            raise RuntimeError(
+                "Kaggle local provider requires kaggle_benchmarks. "
+                "Run inside a Kaggle notebook or install kaggle_benchmarks."
+            ) from exc
+
+    if not any(hasattr(kbench, attr) for attr in ("llm", "llms", "get_llm")):
+        try:
+            from kaggle_benchmarks import kaggle as kbench_fallback
+        except Exception:
+            kbench_fallback = None
+        if kbench_fallback is not None:
+            kbench = kbench_fallback
 
     if model:
         if hasattr(kbench, "llms") and isinstance(kbench.llms, dict):
